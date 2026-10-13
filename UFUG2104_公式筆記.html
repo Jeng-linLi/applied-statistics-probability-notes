@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UFUG2104 應用統計學 · 公式筆記（中英對照・繁體）</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "\\(", right: "\\)", display: false}
+    ],
+    throwOnError: false
+  });
+});
+</script>
+<style>
+  :root{
+    --bg:#fbfaf7; --card:#ffffff; --ink:#1f2328; --muted:#5b6470;
+    --line:#e4e1d8; --accent:#0b6e4f; --accent2:#9a3412; --soft:#f3f1ea;
+    --ex:#eef4ff; --exline:#3b6fd4; --formula:#f6f4ee;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Noto Sans CJK TC","PingFang TC","Microsoft JhengHei","Segoe UI",sans-serif;
+    line-height:1.7;font-size:16px}
+  .wrap{max-width:960px;margin:0 auto;padding:32px 22px 80px}
+  header.top{border-bottom:3px solid var(--accent);padding-bottom:18px;margin-bottom:26px}
+  h1{font-size:27px;margin:0 0 6px;color:var(--accent)}
+  h1 .en{color:var(--muted);font-size:18px;font-weight:600}
+  .sub{color:var(--muted);font-size:14px}
+  h2{margin:40px 0 14px;padding:8px 12px;background:var(--soft);
+    border-left:5px solid var(--accent);border-radius:4px;font-size:21px}
+  h2 .en{color:var(--muted);font-size:14px;font-weight:600;display:block;margin-top:2px}
+  h3{margin:24px 0 8px;font-size:17px;color:var(--accent2)}
+  h3 .en{color:var(--muted);font-size:13px;font-weight:600}
+  .term{font-weight:700}
+  .term .en{color:var(--muted);font-weight:600;font-size:13px}
+  p{margin:8px 0}
+  ul,ol{margin:8px 0 8px 4px;padding-left:22px}
+  li{margin:4px 0}
+  .formula{background:var(--formula);border:1px solid var(--line);border-radius:6px;
+    padding:12px 16px;margin:10px 0;overflow-x:auto}
+  .note{font-size:14px;color:var(--muted);margin:4px 0 12px}
+  .toc{background:var(--card);border:1px solid var(--line);border-radius:8px;
+    padding:14px 20px;margin:18px 0}
+  .toc b{color:var(--accent)}
+  .toc a{color:var(--ink);text-decoration:none}
+  .toc a:hover{text-decoration:underline}
+  .example{background:var(--ex);border:1px solid #d6e2fb;border-left:5px solid var(--exline);
+    border-radius:6px;padding:14px 18px;margin:16px 0}
+  .example .tag{display:inline-block;background:var(--exline);color:#fff;font-size:12px;
+    font-weight:700;padding:2px 9px;border-radius:4px;margin-bottom:8px;letter-spacing:.5px}
+  .example h4{margin:6px 0 6px;font-size:15px;color:#234}
+  .step{margin:6px 0}
+  .step b{color:var(--exline)}
+  table{width:100%;border-collapse:collapse;margin:12px 0;font-size:14px}
+  th,td{border:1px solid var(--line);padding:7px 10px;text-align:left}
+  th{background:var(--soft)}
+  code{background:#efece4;padding:1px 5px;border-radius:3px;font-size:13px}
+  .small{font-size:13px;color:var(--muted)}
+  .src{font-size:12px;color:#8a8f98;font-style:italic}
+  hr{border:none;border-top:1px dashed var(--line);margin:30px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="top">
+  <h1>UFUG2104 應用統計學 · 公式筆記 <span class="en">Formula Cheat Sheet</span></h1>
+  <div class="sub">中英對照・繁體中文 ｜ 含例題詳解 ｜ 對應講義：1. Introduction / 2. Descriptive Statistics / 3. Probability / 4. Discrete Random Variables / 5. Continuous Random Variables</div>
+  <div class="small">底本：Walpole et al., <i>Probability and Statistics for Engineering and Scientists</i> (9th ed.)；Leon-Garcia, <i>Probability, Statistics and Random Processes for Electrical Engineering</i> (3rd ed.)；HKUST MATH 2411 / ELEC 2600。</div>
+</header>
+
+<div class="toc">
+  <b>目錄 Contents</b>
+  <ol>
+    <li><a href="#c1">緒論 Introduction — 基礎術語</a></li>
+    <li><a href="#c2">描述統計 Descriptive Statistics</a></li>
+    <li><a href="#c3">機率 Probability</a></li>
+    <li><a href="#c4">離散隨機變數 Discrete Random Variables</a></li>
+    <li><a href="#c5">連續隨機變數 Continuous Random Variables</a></li>
+  </ol>
+</div>
+
+<!-- ===================== CH1 ===================== -->
+<h2 id="c1">1. 緒論 Introduction <span class="en">Basic Terminology</span></h2>
+
+<p><span class="term">母體 <span class="en">Population</span></span>：研究興趣中全部物件或個體的集合。</p>
+<p><span class="term">樣本 <span class="en">Sample</span></span>：從母體中選出用於分析的一部分。</p>
+<p><span class="term">參數 <span class="en">Parameter</span></span>：由母體算出的數值量數（如全體平均）。</p>
+<p><span class="term">統計量 <span class="en">Statistic</span></span>：由樣本算出的數值量數（如樣本平均），用來推估參數。</p>
+<p><span class="term">描述統計 <span class="en">Descriptive statistics</span></span>：資料的蒐集、彙整與呈現。<br>
+<span class="term">推論統計 <span class="en">Inferential statistics</span></span>：由樣本資料對母體做出結論的統計程序。</p>
+<div class="note">例：要了解「全美選民對總統施政的滿意度」（母體＝全美選民，參數＝滿意百分比），只隨機抽查 1000 人（樣本），用樣本滿意度（統計量）去推估。</div>
+
+<!-- ===================== CH2 ===================== -->
+<h2 id="c2">2. 描述統計 Descriptive Statistics <span class="en">Numerical &amp; Graphical Summaries</span></h2>
+
+<p><span class="term">資料類型 <span class="en">Types of variables</span></span>：類別（名義 Nominal／順序 Ordinal）與數值（離散 Discrete／連續 Continuous）。類別變項不可任意取平均。</p>
+
+<h3>集中趨勢 Measures of Center</h3>
+<p><span class="term">樣本平均 <span class="en">Sample mean</span></span></p>
+<div class="formula">$$\bar{x}=\frac{1}{n}\sum_{i=1}^{n}x_i=\frac{x_1+x_2+\cdots+x_n}{n}$$</div>
+
+<p><span class="term">樣本中位數 <span class="en">Sample median</span></span>（資料由小到大排列 \(x_{(1)}\le\cdots\le x_{(n)}\)）</p>
+<div class="formula">$$\tilde{x}=
+\begin{cases}
+x_{(n+1)/2}, & n\ \text{為奇數}\\[4pt]
+\dfrac{x_{(n/2)}+x_{(n/2+1)}}{2}, & n\ \text{為偶數}
+\end{cases}$$</div>
+<div class="note">平均數對離群值敏感；中位數不受離群值影響。對稱、單峰、無離群值時平均數較合適。</div>
+
+<p><span class="term">截尾平均 <span class="en">Trimmed mean</span></span>：去掉兩端各 \(p\%\) 的極值後再取平均。例如 10% 截尾平均 \(\bar{x}_{\mathrm{tr}(10)}\)：去掉最大與最小各 10% 後取平均。比平均數較不受離群值影響，但比中位數用到較多資訊。</p>
+
+<h3>離散程度 Measures of Spread</h3>
+<p><span class="term">樣本變異數 <span class="en">Sample variance</span></span>（本課程統一使用分母 \(n-1\)）</p>
+<div class="formula">$$s^2=\frac{1}{n-1}\sum_{i=1}^{n}(x_i-\bar{x})^2$$</div>
+<div class="formula">$$s_n^2=\frac{1}{n}\sum_{i=1}^{n}(x_i-\bar{x})^2 \quad\text{（另一常見版本，分母為 }n\text{）}$$</div>
+<p class="note">\(n-1\) 稱為<span class="term">自由度 <span class="en">degrees of freedom</span></span>：先算出平均後，最後一個資料點不再「自由」。另注意 \(\sum_{i=1}^n(x_i-\bar{x})=0\)。</p>
+
+<p><span class="term">樣本標準差 <span class="en">Sample standard deviation</span></span>（與原資料同單位）</p>
+<div class="formula">$$s=\sqrt{s^2}$$</div>
+
+<p><span class="term">樣本全距 <span class="en">Sample range</span></span>：\(x_{\max}-x_{\min}\)　｜　<span class="term">四分位距 <span class="en">Interquartile range (IQR)</span></span>：\(\mathrm{IQR}=Q_3-Q_1\)</p>
+
+<p><span class="term">四分位數規則 <span class="en">Quartile rule</span></span>：令 \(n\) 為資料筆數，\(p=0.25,0.5,0.75\) 對應 \(Q_1,Q_2(\text{中位數}),Q_3\)。計算 \(np+0.5\)：
+<ul>
+<li>若為整數 \(m\)，則第 \(m\) 小者即為該四分位數；</li>
+<li>若非整數，取小於它的最大整數 \(m\)，則四分位數為第 \(m\) 與第 \(m+1\) 小者的平均。</li>
+</ul></p>
+
+<p><span class="term">盒鬚圖異常值判斷 <span class="en">Boxplot outlier rule</span></span>：當</p>
+<div class="formula">$$x\le Q_1-1.5\cdot\mathrm{IQR}\quad\text{或}\quad x\ge Q_3+1.5\cdot\mathrm{IQR}$$</div>
+<p class="note">則視為離群值（outlier）。若資料來自常態分配，落入這兩區的機率僅約 0.007。</p>
+
+<div class="example">
+  <span class="tag">例題 2.1</span>
+  <h4>pH 計偏差（講義 p.21）</h4>
+  <p>某工程師用 pH 計測中性物質（真值 7.0），取樣本數 \(n=10\)，資料為：<br>
+  \(7.07,\ 7.00,\ 7.10,\ 6.97,\ 7.00,\ 7.03,\ 7.01,\ 7.01,\ 6.98,\ 7.08\)。<br>
+  求樣本變異數 \(s_{n-1}^2\) 與樣本標準差 \(s_{n-1}\)。</p>
+  <p class="step"><b>步驟 1｜求平均：</b>\(\bar{x}=\dfrac{7.07+7.00+\cdots+7.08}{10}=7.025\)。</p>
+  <p class="step"><b>步驟 2｜求變異數（自由度 \(n-1=9\)）：</b>
+  $$s^2=\frac{(7.07-7.025)^2+(7.00-7.025)^2+\cdots+(7.08-7.025)^2}{9}=0.001939$$</p>
+  <p class="step"><b>步驟 3｜求標準差：</b>\(s=\sqrt{0.001939}=0.044\)。</p>
+  <p class="note">結論：樣本標準差為 0.044（自由度 9）。<span class="src">來源：2. Descriptive Statistics, p.21</span></p>
+</div>
+
+<!-- ===================== CH3 ===================== -->
+<h2 id="c3">3. 機率 Probability <span class="en">Axioms, Counting &amp; Bayes</span></h2>
+
+<h3>機率公理 Axioms of Probability</h3>
+<div class="formula">
+$$\begin{aligned}
+&\text{(I)}\quad P[A]\ge 0\\
+&\text{(II)}\quad P[S]=1\\
+&\text{(III)}\quad \text{若 }A\cap B=\varnothing,\ P[A\cup B]=P[A]+P[B]
+\end{aligned}$$
+</div>
+<p><span class="term">推論 <span class="en">Corollaries</span></span>：
+\(P[A^c]=1-P[A]\)；若 \(A\subset B\) 則 \(P[A]\le P[B]\)；\(P[\varnothing]=0\)。</p>
+
+<p><span class="term">加法法則 <span class="en">Addition rule</span></span></p>
+<div class="formula">$$P[A\cup B]=P[A]+P[B]-P[A\cap B]$$</div>
+
+<p><span class="term">等可能結果 <span class="en">Equiprobable outcomes</span></span>：若樣本空間 \(S\) 有 \(n\) 個等機率基本事件，則事件 \(A\) 含 \(k\) 個結果時
+\(P[A]=\dfrac{k}{n}=\dfrac{|A|}{|S|}\)。</p>
+
+<h3>計數方法 Counting Methods</h3>
+<table>
+<tr><th>抽取方式</th><th>結果數</th><th>名稱</th></tr>
+<tr><td>有放回、有序<br><span class="en">with replacement &amp; ordered</span></td><td>\(n^k\)</td><td>有序 \(k\) 元組</td></tr>
+<tr><td>無放回、有序<br><span class="en">without replacement &amp; ordered</span></td><td>\(P(n,k)=\dfrac{n!}{(n-k)!}\)</td><td>排列 Permutation</td></tr>
+<tr><td>無放回、無序<br><span class="en">without replacement &amp; unordered</span></td><td>\(\binom{n}{k}=\dfrac{n!}{k!\,(n-k)!}\)</td><td>組合 Combination「\(n\) 取 \(k\)」</td></tr>
+<tr><td>全部排列</td><td>\(n!=(n)(n-1)\cdots(2)(1)\)</td><td>階乘 Factorial</td></tr>
+</table>
+<p class="note"><span class="term">斯特林公式 <span class="en">Stirling's formula</span></span>（大 \(n\) 近似）：\(n!\sim\sqrt{2\pi n}\left(\dfrac{n}{e}\right)^n\)。</p>
+
+<h3>條件機率與貝氏 Conditional Probability &amp; Bayes</h3>
+<p><span class="term">條件機率 <span class="en">Conditional probability</span></span>（\(P[B]>0\)）</p>
+<div class="formula">$$P[A\mid B]=\frac{P[A\cap B]}{P[B]}$$</div>
+<p>\(P[A]\) 為先驗機率（a priori），\(P[A\mid B]\) 為後驗機率（a posteriori）。</p>
+
+<p><span class="term">乘法法則 <span class="en">Product rule</span></span></p>
+<div class="formula">$$P[A\cap B]=P[A\mid B]\,P[B]=P[B\mid A]\,P[A]$$</div>
+
+<p><span class="term">全機率定理 <span class="en">Law of total probability</span></span>：若 \(B_1,\dots,B_n\) 為 \(S\) 的一組分割（互斥且聯集為 \(S\)），則</p>
+<div class="formula">$$P[A]=\sum_{i=1}^{n}P[A\mid B_i]\,P[B_i]$$</div>
+
+<p><span class="term">貝氏定理 <span class="en">Bayes' rule</span></span></p>
+<div class="formula">$$P[B_j\mid A]=\frac{P[A\mid B_j]\,P[B_j]}{\sum_{i=1}^{n}P[A\mid B_i]\,P[B_i]}$$</div>
+
+<div class="example">
+  <span class="tag">例題 3.1</span>
+  <h4>號碼球（講義 p.21）</h4>
+  <p>甕中有編號 0–9 的 10 顆相同球，隨機抽一顆。設
+  \(A=\)「號碼為奇數」\(=\{1,3,5,7,9\}\)，
+  \(B=\)「號碼為 3 的倍數」\(=\{3,6,9\}\)，
+  \(C=\)「號碼小於 5」\(=\{0,1,2,3,4\}\)。</p>
+  <p class="step"><b>步驟：</b>因等可能，\(P[A]=5/10,\ P[B]=3/10,\ P[C]=5/10\)。且 \(A\cap B=\{3,9\}\)，故 \(P[A\cap B]=2/10\)。</p>
+  <p class="step"><b>求 \(P[A\cup B]\)：</b>
+  $$P[A\cup B]=P[A]+P[B]-P[A\cap B]=\frac{5}{10}+\frac{3}{10}-\frac{2}{10}=\frac{6}{10}$$</p>
+  <p class="note">結論：\(P[A\cup B]=0.6\)。<span class="src">來源：3. Probability, p.21</span></p>
+</div>
+
+<div class="example">
+  <span class="tag">例題 3.2</span>
+  <h4>全機率：兩紅球問題（講義 p.47）</h4>
+  <p>甕中有 2 黑 3 紅共 5 球，無放回抽 2 球。令 \(B_1=\)「第一球黑」、\(R_1=\)「第一球紅」、\(R_2=\)「第二球紅」。求 \(P[R_2]\)。</p>
+  <p class="step"><b>步驟 1｜先機率：</b>\(P[B_1]=2/5,\ P[R_1]=3/5\)。</p>
+  <p class="step"><b>步驟 2｜條件機率：</b>若第一球黑，剩 1 黑 3 紅，\(P[R_2\mid B_1]=3/4\)；若第一球紅，剩 2 黑 2 紅，\(P[R_2\mid R_1]=2/4=1/2\)。</p>
+  <p class="step"><b>步驟 3｜全機率：</b>
+  $$P[R_2]=P[R_2\mid B_1]P[B_1]+P[R_2\mid R_1]P[R_1]
+  =\frac{3}{4}\cdot\frac{2}{5}+\frac{1}{2}\cdot\frac{3}{5}
+  =\frac{3}{5}$$</p>
+  <p class="note">結論：第二球為紅的機率仍是 \(3/5\)（對稱性使然）。<span class="src">來源：3. Probability, p.47</span></p>
+</div>
+
+<!-- ===================== CH4 ===================== -->
+<h2 id="c4">4. 離散隨機變數 Discrete Random Variables <span class="en">pmf, Expectation &amp; Key Distributions</span></h2>
+
+<p><span class="term">隨機變數 <span class="en">Random variable</span></span>：將實驗結果對應到實數的函數 \(X:S\to\mathbb{R}\)。離散型取值於可數集合。</p>
+
+<p><span class="term">機率質量函數 <span class="en">Probability Mass Function (pmf)</span></span></p>
+<div class="formula">$$p_X(x)=P[X=x],\qquad p_X(x)\ge 0,\qquad \sum_x p_X(x)=1$$</div>
+
+<p><span class="term">累積分布函數 <span class="en">Cumulative Distribution Function (cdf)</span></span></p>
+<div class="formula">$$F_X(x)=P[X\le x]=\sum_{k\le x}p_X(k)$$</div>
+
+<h3>期望值與變異數 Expectation &amp; Variance</h3>
+<p><span class="term">期望值 <span class="en">Expected value</span></span></p>
+<div class="formula">$$E[X]=\sum_x x\,p_X(x)$$</div>
+<p><span class="term">線性性 <span class="en">Linearity</span></span>：\(E[aX+b]=aE[X]+b\)；
+\(E[a\,g(X)+b\,h(X)+c]=aE[g(X)]+bE[h(X)]+c\)。
+<span class="note">注意：\(E[g(X)]\neq g(E[X])\)（除非 \(g\) 為線性）。</span></p>
+
+<p><span class="term">變異數 <span class="en">Variance</span></span></p>
+<div class="formula">$$\mathrm{Var}[X]=E[(X-E[X])^2]=E[X^2]-(E[X])^2$$</div>
+<p class="note">\(\mathrm{Var}[X]\ge 0\)；\(\mathrm{Var}[aX+b]=a^2\mathrm{Var}[X]\)；\(\mathrm{Var}[c]=0\)。</p>
+
+<p><span class="term">動差 <span class="en">Moments</span></span>：第 \(n\) 階動差 \(E[X^n]\)；第 \(n\) 階中央動差 \(E[(X-E[X])^n]\)。一階動差＝平均；二階中央動差＝變異數。</p>
+
+<h3>重要離散分配 Important Discrete Distributions</h3>
+
+<p><span class="term">柏努利 Bernoulli</span>（單次試驗，成功機率 \(p\)）</p>
+<div class="formula">$$p_X(1)=p,\quad p_X(0)=1-p\qquad E[X]=p,\quad \mathrm{Var}[X]=p(1-p)$$</div>
+
+<p><span class="term">二項 Binomial</span>（\(n\) 次獨立伯努利，成功次數 \(X\)）</p>
+<div class="formula">$$p_X(k)=\binom{n}{k}p^k(1-p)^{n-k},\quad k=0,1,\dots,n$$</div>
+<div class="formula">$$E[X]=np,\qquad \mathrm{Var}[X]=np(1-p)$$</div>
+
+<p><span class="term">幾何 Geometric</span>（直到首次成功的試驗次數 \(M\)）</p>
+<div class="formula">$$p_M(k)=(1-p)^{k-1}p,\quad k=1,2,\dots$$</div>
+<div class="formula">$$E[M]=\frac{1}{p},\qquad \mathrm{Var}[M]=\frac{1-p}{p^2}$$</div>
+<p class="note">若定義 \(M'=\)「首次成功前的失敗次數」，則 \(p_{M'}(k)=(1-p)^k p,\ k=0,1,2,\dots\)，\(E[M']=\dfrac{1-p}{p},\ \mathrm{Var}[M']=\dfrac{1-p}{p^2}\)。</p>
+<p><span class="term">無記憶性 <span class="en">Memoryless</span></span>：\(P[M>m+n\mid M>m]=P[M>n]\)。\(E[M]=1/p\) 為首次成功的「平均等待次數」。</p>
+
+<p><span class="term">卜瓦松 Poisson</span>（某區間內事件發生次數，平均發生率 \(\alpha\)）</p>
+<div class="formula">$$p_X(k)=e^{-\alpha}\frac{\alpha^k}{k!},\quad k=0,1,2,\dots$$</div>
+<div class="formula">$$E[X]=\alpha,\qquad \mathrm{Var}[X]=\alpha$$</div>
+<p><span class="term">卜瓦松近似二項 <span class="en">Poisson approximation to Binomial</span></span>：當 \(n\) 大、\(p\) 小（\(np\) 適中）時，令 \(\alpha=np\)：
+$$P[X=k]\approx e^{-np}\frac{(np)^k}{k!}$$</p>
+
+<div class="example">
+  <span class="tag">例題 4.1</span>
+  <h4>通信位元錯誤（講義 p.31）</h4>
+  <p>一區塊 200 位元經二進通道傳送，每位元錯誤機率 \(p=0.01\)，且彼此獨立。令 \(X=\) 區塊中的錯誤數。</p>
+  <p class="step"><b>(a) 求 \(P[X=3]\)：</b>\(X\sim\mathrm{Binomial}(n=200,p=0.01)\)，
+  $$P[X=3]=\binom{200}{3}(0.01)^3(0.99)^{197}\approx 0.1814$$</p>
+  <p class="step"><b>(b) 期望值與變異數：</b>
+  $$E[X]=np=200\times0.01=2,\qquad \mathrm{Var}[X]=np(1-p)=200\times0.01\times0.99=1.98$$</p>
+  <p class="note">結論：\(P[X=3]\approx0.1814,\ E[X]=2,\ \mathrm{Var}[X]=1.98\)。<span class="src">來源：4. Discrete Random Variables, p.31</span></p>
+</div>
+
+<div class="example">
+  <span class="tag">例題 4.2</span>
+  <h4>丟硬幣三次的 pmf（講義 p.11）</h4>
+  <p>公平硬幣丟 3 次，令 \(X=\) 正面次數。樣本空間每個結果機率 \(1/8\)。</p>
+  <p class="step"><b>步驟：</b>
+  \(P[X=0]=P\{TTT\}=1/8\)；
+  \(P[X=1]=P\{HTT,THT,TTH\}=3/8\)；
+  \(P[X=2]=P\{HHT,HTH,THH\}=3/8\)；
+  \(P[X=3]=P\{HHH\}=1/8\)。</p>
+  <p class="step"><b>檢查：</b>\(\frac18+\frac38+\frac38+\frac18=1\) ✓。此即 \(X\sim\mathrm{Binomial}(n=3,p=0.5)\)。</p>
+  <p class="note">結論：pmf 為 \(\{0:1/8,\ 1:3/8,\ 2:3/8,\ 3:1/8\}\)。<span class="src">來源：4. Discrete Random Variables, p.11</span></p>
+</div>
+
+<!-- ===================== CH5 ===================== -->
+<h2 id="c5">5. 連續隨機變數 Continuous Random Variables <span class="en">pdf, CDF &amp; Key Distributions</span></h2>
+
+<p><span class="term">累積分布函數 <span class="en">CDF</span></span>：\(F_X(x)=P[X\le x]\)。性質：非遞減；\(F(-\infty)=0,\ F(\infty)=1\)；右連續；\(P[a<X\le b]=F(b)-F(a)\)。</p>
+
+<p><span class="term">機率密度函數 <span class="en">Probability Density Function (pdf)</span></span></p>
+<div class="formula">$$f_X(x)=\frac{d}{dx}F_X(x),\qquad f_X(x)\ge 0,\qquad \int_{-\infty}^{\infty}f_X(x)\,dx=1$$</div>
+<div class="formula">$$P[a<X\le b]=\int_a^b f_X(x)\,dx$$</div>
+<p class="note">pdf <b>不是</b> \(P[X=x]\)（連續型單點機率為 0），而是 \(X\) 落在 \(x\) 附近的可能程度。</p>
+
+<p><span class="term">期望值 / 變異數</span></p>
+<div class="formula">$$E[X]=\int_{-\infty}^{\infty}x\,f_X(x)\,dx,\qquad E[g(X)]=\int_{-\infty}^{\infty}g(x)\,f_X(x)\,dx$$</div>
+<div class="formula">$$\mathrm{Var}[X]=E[X^2]-(E[X])^2$$</div>
+
+<h3>重要連續分配 Important Continuous Distributions</h3>
+
+<p><span class="term">均勻 Uniform</span> \(X\sim U(a,b)\)</p>
+<div class="formula">$$f_X(x)=\begin{cases}\dfrac{1}{b-a},& a\le x\le b\\[4pt]0,& \text{otherwise}\end{cases}
+\qquad E[X]=\frac{a+b}{2},\quad \mathrm{Var}[X]=\frac{(b-a)^2}{12}$$</div>
+
+<p><span class="term">指數 Exponential</span>（速率參數 \(\lambda>0\)）</p>
+<div class="formula">$$f_X(x)=\begin{cases}\lambda e^{-\lambda x},& x\ge 0\\[4pt]0,& x<0\end{cases}
+\qquad F_X(x)=1-e^{-\lambda x}\ (x\ge0)$$</div>
+<div class="formula">$$E[X]=\frac{1}{\lambda},\qquad \mathrm{Var}[X]=\frac{1}{\lambda^2}$$</div>
+<p><span class="term">無記憶性 <span class="en">Memoryless</span></span>：\(P[X>t+s\mid X>t]=P[X>s]=e^{-\lambda s}\)。指數分配是幾何分配的連續極限。</p>
+
+<p><span class="term">常態 / 高斯 Gaussian / Normal</span> \(X\sim N(\mu,\sigma^2)\)</p>
+<div class="formula">$$f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}},\qquad E[X]=\mu,\quad \mathrm{Var}[X]=\sigma^2$$</div>
+<p>標準常態 <span class="term">Standard normal</span> \(Z\sim N(0,1)\)：</p>
+<div class="formula">$$\Phi(x)=P[Z\le x]=\int_{-\infty}^{x}\frac{1}{\sqrt{2\pi}}e^{-t^2/2}\,dt$$</div>
+<p><span class="term">Q 函數 <span class="en">Q-function</span></span>（存活函數）：\(Q(x)=P[Z>x]=1-\Phi(x)=\Phi(-x)\)。</p>
+<p>對一般 \(Y\sim N(\mu,\sigma^2)\)：</p>
+<div class="formula">$$F_Y(y)=\Phi\!\left(\frac{y-\mu}{\sigma}\right),\qquad P[Y>y]=Q\!\left(\frac{y-\mu}{\sigma}\right)$$</div>
+
+<p><span class="term">伽瑪 Gamma</span>（形狀參數 \(\alpha>0\)，速率參數 \(\lambda>0\)）</p>
+<div class="formula">$$f_X(x)=\begin{cases}\dfrac{\lambda^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\lambda x},& x\ge 0\\[4pt]0,& x<0\end{cases}
+\qquad E[X]=\frac{\alpha}{\lambda},\quad \mathrm{Var}[X]=\frac{\alpha}{\lambda^2}$$</div>
+<p class="note">\(\Gamma(\alpha)=\int_0^\infty t^{\alpha-1}e^{-t}dt\) 為伽瑪函數；\(\Gamma(n)=(n-1)!\)（\(n\) 為正整數）。</p>
+
+<h3>不等式與極限定理 Inequalities &amp; Limit Theorems</h3>
+<p><span class="term">切比雪夫不等式 <span class="en">Chebyshev's Inequality</span></span>（對任意隨機變數，\(\mu=E[X],\ \sigma^2=\mathrm{Var}[X]\)）</p>
+<div class="formula">$$P(|X-\mu|\ge a)\le \frac{\sigma^2}{a^2}
+\quad\text{或等價地}\quad
+P(|X-\mu|\ge k\sigma)\le \frac{1}{k^2}$$</div>
+
+<p><span class="term">中央極限定理 <span class="en">Central Limit Theorem (CLT)</span></span>：設 \(X_1,\dots,X_n\) 為 i.i.d.，均值 \(\mu\)、變異數 \(\sigma^2\)，則</p>
+<div class="formula">$$\frac{\sum_{i=1}^n X_i-n\mu}{\sigma\sqrt{n}}\ \xrightarrow{d}\ N(0,1)\quad (n\to\infty)$$</div>
+
+<div class="example">
+  <span class="tag">例題 5.1</span>
+  <h4>機器壽命（指數，講義 p.27）</h4>
+  <p>機器壽命 \(X\)（年）服從指數分配，參數 \(\lambda=0.5\)。</p>
+  <p class="step"><b>(a) 壽命超過 4 年的機率：</b>
+  $$P[X>4]=\int_4^\infty 0.5e^{-0.5x}dx=e^{-0.5\times4}=e^{-2}\approx0.1353$$</p>
+  <p class="step"><b>(b) 已知已運作 4 年，再撐至少 1 年的機率：</b>由無記憶性
+  $$P[X>4+1\mid X>4]=P[X>1]=e^{-0.5\times1}=e^{-1}\approx0.3679$$</p>
+  <p class="note">結論：\(P[X>4]=e^{-2}\)，\(P[X>5\mid X>4]=e^{-1}\)。<span class="src">來源：5. Continuous Random Variables, p.27</span></p>
+</div>
+
+<div class="example">
+  <span class="tag">例題 5.2</span>
+  <h4>通訊系統雜訊（常態，講義 p.34）</h4>
+  <p>\(Y=av+N\)，其中雜訊 \(N\sim N(0,\sigma^2)\)，\(\sigma=2\)。求最小 \(v\) 使 \(P[Y<0]\le 10^{-6}\)。</p>
+  <p class="step"><b>步驟 1｜轉換：</b>
+  $$P[Y<0]=P[av+N<0]=P[N<-av]=\Phi\!\left(\frac{-av-0}{\sigma}\right)=\Phi\!\left(-\frac{av}{\sigma}\right)$$</p>
+  <p class="step"><b>步驟 2｜令其 \(\le 10^{-6}\)：</b>
+  $$\Phi\!\left(-\frac{av}{\sigma}\right)\le 10^{-6}
+  \ \Rightarrow\ -\frac{av}{\sigma}\le \Phi^{-1}(10^{-6})$$</p>
+  <p class="step"><b>步驟 3｜解 \(v\)：</b>因 \(\Phi^{-1}(10^{-6})\approx -4.753\)，
+  $$v\ge -\frac{\sigma}{a}\,\Phi^{-1}(10^{-6})
+  =-\frac{2}{a}(-4.753)=\frac{9.506}{a}$$</p>
+  <p class="note">結論：例如 \(a=0.01\) 時 \(v\ge 950.6\)（講義取 950.7）。<span class="src">來源：5. Continuous Random Variables, p.34</span></p>
+</div>
+
+<hr>
+<p class="small">本筆記依據 UFUG2104 應用統計學五份講義（Introduction / Descriptive Statistics / Probability / Discrete Random Variables / Continuous Random Variables）整理，公式與例題均對應原講義頁碼，便於回查。數學式以 KaTeX 渲染；如需 PDF/Markdown 版本或增補聯合分配（Joint pmf/pdf）、條件期望等章節，可再告知。</p>
+
+</div>
+</body>
+</html>
