@@ -280,9 +280,9 @@ $$ E[X]=\sum_x x\,p_X(x) $$
 
 - **變異數 (Variance)**：
 
-$$ \operatorname{Var}(X)=E\!\left[(X-\mu)^2\right]=E[X^2]-\mu^2,\qquad \mu=E[X] $$
+$$ \text{Var}(X)=E\!\left[(X-\mu)^2\right]=E[X^2]-\mu^2,\qquad \mu=E[X] $$
 
-- **標準差 (Standard Deviation)**：$SD(X)=\sqrt{\operatorname{Var}(X)}$
+- **標準差 (Standard Deviation)**：$SD(X)=\sqrt{\text{Var}(X)}$
 - **動差 (Moments)**：第 $k$ 階動差 $E[X^k]$；變異數是第二階**中心動差 (central moment)**。
 
 ### 4.3 期望與變異數的性質
@@ -290,9 +290,9 @@ $$ \operatorname{Var}(X)=E\!\left[(X-\mu)^2\right]=E[X^2]-\mu^2,\qquad \mu=E[X] 
 $$
 \begin{aligned}
 E[aX+b] &= a\,E[X]+b \\
-\operatorname{Var}(aX+b) &= a^2\,\operatorname{Var}(X) \\
+\text{Var}(aX+b) &= a^2\,\text{Var}(X) \\
 E[X+Y] &= E[X]+E[Y] \quad\text{（恆成立）}\\
-\operatorname{Var}(X+Y) &= \operatorname{Var}(X)+\operatorname{Var}(Y) \quad\text{（當 }X,Y\text{ 獨立時）}
+\text{Var}(X+Y) &= \text{Var}(X)+\text{Var}(Y) \quad\text{（當 }X,Y\text{ 獨立時）}
 \end{aligned}
 $$
 
@@ -307,7 +307,7 @@ p, & k=1\\
 1-p, & k=0
 \end{cases}
 \qquad
-E[X]=p,\quad \operatorname{Var}(X)=p(1-p)
+E[X]=p,\quad \text{Var}(X)=p(1-p)
 $$
 
 ### 4.5 Binomial 分配 (Binomial Distribution)
@@ -319,7 +319,7 @@ P(X=k)=\binom{n}{k}p^k(1-p)^{n-k},\quad k=0,1,\dots,n
 $$
 
 $$
-E[X]=np,\qquad \operatorname{Var}(X)=np(1-p)
+E[X]=np,\qquad \text{Var}(X)=np(1-p)
 $$
 
 > 可視為 $n$ 個獨立 Bernoulli 變數之和：$X=\sum_{i=1}^{n}X_i$。
@@ -333,7 +333,7 @@ P(X=k)=(1-p)^{k-1}p,\quad k=1,2,\dots
 $$
 
 $$
-E[X]=\frac{1}{p},\qquad \operatorname{Var}(X)=\frac{1-p}{p^2}
+E[X]=\frac{1}{p},\qquad \text{Var}(X)=\frac{1-p}{p^2}
 $$
 
 - **無記憶性 (Memoryless)**：$\displaystyle P(X>m+n\mid X>m)=P(X>n)$
@@ -347,7 +347,7 @@ P(X=k)=\frac{e^{-\lambda}\lambda^k}{k!},\quad k=0,1,2,\dots
 $$
 
 $$
-E[X]=\lambda,\qquad \operatorname{Var}(X)=\lambda
+E[X]=\lambda,\qquad \text{Var}(X)=\lambda
 $$
 
 - **二項近似 (Poisson approximation to Binomial)**：當 $n$ 很大、$p$ 很小時，令 $\lambda=np$，則
@@ -374,7 +374,7 @@ $$ P(X=3)=\binom{200}{3}(0.01)^3(0.99)^{197}\approx 0.1814 $$
 
 - (b) 期望值與變異數：
 
-$$ E[X]=np=200\times0.01=2,\qquad \operatorname{Var}(X)=np(1-p)=1.98 $$
+$$ E[X]=np=200\times0.01=2,\qquad \text{Var}(X)=np(1-p)=1.98 $$
 
 此處 $\lambda=np=2$，必要時可用 Poisson(2) 近似。
 
@@ -397,7 +397,7 @@ $$ P(a<X<b)=\int_a^b f_X(x)\,dx $$
 - 期望與變異數：
 
 $$ E[X]=\int_{-\infty}^{\infty}x\,f_X(x)\,dx,\qquad
-\operatorname{Var}(X)=\int_{-\infty}^{\infty}(x-\mu)^2 f_X(x)\,dx=E[X^2]-\mu^2 $$
+\text{Var}(X)=\int_{-\infty}^{\infty}(x-\mu)^2 f_X(x)\,dx=E[X^2]-\mu^2 $$
 
 ### 5.2 Uniform 分配 (Continuous Uniform)
 
@@ -412,7 +412,7 @@ f_X(x)=
 $$
 
 $$
-E[X]=\frac{a+b}{2},\qquad \operatorname{Var}(X)=\frac{(b-a)^2}{12}
+E[X]=\frac{a+b}{2},\qquad \text{Var}(X)=\frac{(b-a)^2}{12}
 $$
 
 ### 5.3 Exponential 分配 (Exponential Distribution)
@@ -430,7 +430,7 @@ F_X(x)=1-e^{-\lambda x}\;(x\ge0)
 $$
 
 $$
-E[X]=\frac{1}{\lambda},\qquad \operatorname{Var}(X)=\frac{1}{\lambda^2}
+E[X]=\frac{1}{\lambda},\qquad \text{Var}(X)=\frac{1}{\lambda^2}
 $$
 
 - **無記憶性 (Memoryless)**：$\displaystyle P(X>s+t\mid X>s)=P(X>t)$
@@ -445,7 +445,7 @@ f_X(x)=\frac{1}{\sigma\sqrt{2\pi}}\exp\!\left(-\frac{(x-\mu)^2}{2\sigma^2}\right
 $$
 
 $$
-E[X]=\mu,\qquad \operatorname{Var}(X)=\sigma^2
+E[X]=\mu,\qquad \text{Var}(X)=\sigma^2
 $$
 
 - **標準化 (Standardization)**：若 $X\sim\mathcal{N}(\mu,\sigma^2)$，則
@@ -475,7 +475,7 @@ f_X(x)=
 $$
 
 $$
-E[X]=\frac{\alpha}{\lambda},\qquad \operatorname{Var}(X)=\frac{\alpha}{\lambda^2}
+E[X]=\frac{\alpha}{\lambda},\qquad \text{Var}(X)=\frac{\alpha}{\lambda^2}
 $$
 
 - **Gamma 函數**：
@@ -553,7 +553,7 @@ v\ge \frac{2\times4.753}{a}\approx \frac{9.51}{a} $$
 
 ## 附錄：分配速查表
 
-| 分配 | 參數 | pmf / pdf | 期望 $E[X]$ | 變異數 $\operatorname{Var}(X)$ | 關鍵性質 |
+| 分配 | 參數 | pmf / pdf | 期望 $E[X]$ | 變異數 $\text{Var}(X)$ | 關鍵性質 |
 | --- | --- | --- | --- | --- | --- |
 | Bernoulli | $p$ | $p^k(1-p)^{1-k},\;k\in\{0,1\}$ | $p$ | $p(1-p)$ | 單次試驗 |
 | Binomial | $n,p$ | $\binom{n}{k}p^k(1-p)^{n-k}$ | $np$ | $np(1-p)$ | $n$ 次獨立 Bernoulli 和 |
