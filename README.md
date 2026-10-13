@@ -242,7 +242,8 @@ $$
 \begin{aligned}
 P(D\mid \text{test+})
 &=\frac{P(\text{test+}\mid D)\,P(D)}
-        {P(\text{test+}\mid D)P(D)+P(\text{test+}\mid D^c)P(D^c)} \\[4pt]
+        {P(\text{test+}\mid D)P(D)+P(\text{test+}\mid D^c)P(D^c)} \\
+
 &=\frac{0.99\times 0.5}{0.99\times 0.5+0.01\times 0.5}
  =\frac{0.495}{0.500}=0.99=99\%
 \end{aligned}
@@ -406,7 +407,8 @@ $X$ 在區間 $[a,b]$ 上等可能。
 $$
 f_X(x)=
 \begin{cases}
-\dfrac{1}{b-a}, & a\le x\le b\\[4pt]
+\dfrac{1}{b-a}, & a\le x\le b\\
+
 0, & \text{otherwise}
 \end{cases}
 $$
@@ -469,7 +471,8 @@ $$
 $$
 f_X(x)=
 \begin{cases}
-\dfrac{\lambda^\alpha x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}, & x\ge 0\\[6pt]
+\dfrac{\lambda^\alpha x^{\alpha-1}e^{-\lambda x}}{\Gamma(\alpha)}, & x\ge 0\\
+
 0, & x<0
 \end{cases}
 $$
